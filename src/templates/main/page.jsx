@@ -9,11 +9,13 @@ const Templeate = ({ children }) => {
         <nav>
           <Link to="/">Ecommerce</Link>
           <Link to="/ruleta">Ruleta</Link>
-          <Link to="/login">Log in</Link>
           <Link to="/loteria">Loteria</Link>
+          <Link to="/login">Log in</Link>
         </nav>
       </header>
-      {children}
+      <div >
+        {children}
+      </div>
       <ChatBot />
     </>
   );

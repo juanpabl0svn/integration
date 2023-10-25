@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import Login from "./components/login/page";
 import Ecommerce from "./components/e-commerce/page";
+import Loteria from "./components/loteria/page";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Ruleta from "./components/ruleta/page";
@@ -26,12 +27,14 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/loteria",
+    element: (<Template>
+      <Loteria />
+    </Template>)
   },
   {
-    path: "*",
-    element: <h1>Not Found</h1>,
+    path: "/login",
+    element: <Login />,
   },
 ]);
 
