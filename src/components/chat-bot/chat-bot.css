@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  --length: 200px;
+  --orange: #fb8407;
+  --blue: #112ea2;
+  scroll-behavior: smooth;
+}
+
+
+.card {
+  position: fixed;
+  bottom: 0.7rem;
+  right: -13rem;
+  width: 200px;
+  transition: all 400ms ease-in-out;
+}
+
+.title {
+  background: var(--orange);
+  width: 100%;
+  padding: 8px 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+textarea {
+  border-bottom-left-radius: 5px;
+  width: calc(100% - 20px);
+  height: 20px;
+  outline: none;
+  border: none;
+  border-top: 1px solid gray;
+  resize: none;
+  padding: 10px 10px;
+  padding-right: 15px;
+  font-size: 1rem;
+  border-bottom-right-radius: 5px;
+}
+
+.send {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 200px;
+  overflow-y: scroll;
+  background: white;
+}
+
+p.user,
+p.bot {
+  max-width: 70%;
+  word-wrap: break-word;
+  border: 1px solid black;
+  background: #000;
+}
+
+p.user {
+  background-color: var(--blue);
+  color: white;
+  align-self: flex-end;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 4px;
+}
+
+p.bot {
+  background-color: #f1f1f1;
+  color: black;
+  align-self: flex-start;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 4px;
+}
+
+*::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-button:increment,
+*::-webkit-scrollbar-button {
+  display: none;
+}
+
+*::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.new-message {
+  animation: slideIn 0.5s ease; /* Utiliza la animación 'slideIn' durante 0.5 segundos */
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.icon-chat-bot {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.show {
+  transform: translateX(-107%);
+  transition: all 400ms ease-in-out;
+}
+
+.icon-send {
+  position: absolute;
+  width: 30px;
+  right: 0;
+  cursor: pointer;
+  background: #ffff;
+  height: 90%;
+  border-bottom-right-radius: 5px;
+}
+
+.exit-icon {
+  position: absolute;
+  width: 20px;
+  top: -4px;
+  right: 8px;
+  cursor: pointer;
+  opacity: 100%;
+  transition: opacity 150ms ease-in-out;
+}
+
+.exit-icon:hover {
+  opacity: 80%;
+  transition: opacity 150ms ease-in-out;
+}

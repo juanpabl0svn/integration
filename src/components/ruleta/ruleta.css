@@ -1,0 +1,5 @@
+.ruleta {
+  & img {
+    height: 500px;
+  }
+}

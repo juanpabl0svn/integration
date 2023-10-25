@@ -24,10 +24,39 @@ header {
     }
   }
 }
-
-
-.e-commerce{
-  width: 100%;
+.e-commerce {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
   height: calc(100% - 60px);
-  background: #000;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  place-items: center;
+  overflow-y: scroll;
+
+  & article {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 20px;
+
+    & img {
+      height: 200px;
+      aspect-ratio: 1;
+      border-radius: 20px;
+    }
+  }
+
+  & article section {
+    position: relative;
+
+    & .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+    }
+  }
 }
