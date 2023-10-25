@@ -7,7 +7,9 @@ import Loteria from "./components/loteria/page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Ruleta from "./components/ruleta/page";
 
+
 import Template from "./templates/main/page";
+import Context from "./context";
 
 const router = createBrowserRouter([
   {
@@ -28,9 +30,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/loteria",
-    element: (<Template>
-      <Loteria />
-    </Template>)
+    element: (
+      <Template>
+        <Loteria />
+      </Template>
+    ),
   },
   {
     path: "/login",
@@ -39,5 +43,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <Context>
+    <RouterProvider router={router} />
+  </Context>
 );
