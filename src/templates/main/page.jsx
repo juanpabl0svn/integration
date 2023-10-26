@@ -16,7 +16,7 @@ const Templeate = ({ children }) => {
           <Link to="/store">E-commerce</Link>
           <Link to="/ruleta">Ruleta</Link>
           <Link to="/loteria">Loteria</Link>
-          <Link to="/zodiaco">Zodiaco</Link>
+          <Link to="/subasta">Subasta</Link>
           <Link to="/login">Log in</Link>
         </nav>
       </header>

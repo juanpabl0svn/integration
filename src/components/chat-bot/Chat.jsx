@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import Message from "./Message";
 import Menu from "./Menu";
-import { getFromService } from "../../services/getFromService";
 import SendIcon from "./SendIcon";
 import ExitIcon from "./ExitIcon";
 import useMessage from "../../hooks/useMessages";
@@ -68,8 +67,6 @@ const giveAnAnswer = (message) => {
   return bestOne;
 };
 
-// Assuming "options" is a global or an input, make sure it's defined or passed to the function.
-
 const PROCESS = {
   password: ["¿Quieres cambiar tu contraseña?", "Ingresa tu nueva contraseña"],
   pqr: ["¿Quieres hacer una PQR para presentar tu problema?", "Ingresa la pqr"],
@@ -79,14 +76,10 @@ const PROCESS = {
   si: ["Dime"],
 };
 
-const URL = "http://localhost:5000";
-
-function makeAPQR(message) {
-  alert(message);
-}
-
 const HANDLE_PROCESS = {
-  pqr: makeAPQR,
+  pqr: (message) => alert("Realizaste pqr " + message),
+  password: (message) => alert("Nueva contraseña " + message),
+  tournament: (message) => alert("Torneo " + message),
 };
 
 function controlMessages() {
@@ -122,8 +115,7 @@ async function checkQuestion(
     return setAnswer((lastMessages) => [...lastMessages, messageObject]);
   }
 
-  const  response  = giveAnAnswer(message)
-
+  const response = giveAnAnswer(message);
 
   const process = PROCESS[response] ?? response;
 

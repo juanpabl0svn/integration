@@ -10,8 +10,7 @@ import Home from "./components/home/page";
 
 import Template from "./templates/main/page";
 import Context from "./context";
-
-import Zodiaco from "./components/zodiaco/page";
+import Subasta from "./components/subasta/pages/CrearSubasta";
 
 const router = createBrowserRouter([
   {
@@ -46,17 +45,17 @@ const router = createBrowserRouter([
       </Template>
     ),
   },
-  // {
-  //   path: "/zodiaco",
-  //   element: (
-  //     <Template>
-  //       <Zodiaco />
-  //     </Template>
-  //   ),
-  // },
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/subasta",
+    element: (
+      <Template>
+        <Subasta />
+      </Template>
+    ),
   },
 ]);
 
