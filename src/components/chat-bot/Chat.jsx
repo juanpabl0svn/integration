@@ -137,7 +137,7 @@ const Chat = () => {
   };
 
   return (
-    <article className="card" id="card">
+    <article className="card-chat" id="card">
       <p className="title">Tu amigo</p>
       <ExitIcon click={handleExit} />
       <section className="chat" id="chat">
