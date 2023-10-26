@@ -94,19 +94,45 @@ aside {
   width: clamp(350px, 70vw, 650px);
   background: #ffffff;
   padding: 20px;
+  display: grid;
+  place-items: center;
+  & input[type="button"].close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.8em;
+    border: none;
+    cursor: pointer;
+  }
+
+  & input[type="button"].purchase {
+    border-radius: 20px;
+    width: 80px;
+    height: 40px;
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+    cursor: pointer;
+    background: #807777;
+    border: 1px solid black;
+  }
+
+  & input[type="button"].green {
+    background: #15b300;
+    color: white;
+  }
 
   & article {
-    display: grid;
-    place-content: center;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
     height: 80%;
-
     overflow-y: scroll;
-    /* background: #000; */
-    /* background: #000; */
 
     & section {
       display: flex;
       align-items: center;
+      width: 350px;
 
       & img {
         aspect-ratio: 1;
@@ -114,4 +140,9 @@ aside {
       }
     }
   }
+}
+
+.right {
+  position: absolute;
+  right: 0;
 }

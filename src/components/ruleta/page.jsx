@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 import "./ruleta.css";
 
@@ -18,9 +18,11 @@ const angles = new Array(37).fill(0).map((_, i) => {
 function App() {
   const [isWorking, setIsWorking] = useState(false);
   const [ball, setBall] = useState(null);
-  const money = useRef(null);
+  const [money, setMoney] = useState("");
 
   async function handleClick() {
+    if (ball == null || money == "") return;
+
     const bola = $(".bola");
 
     bola.style.top = "47%";
@@ -75,18 +77,6 @@ function App() {
     setTimeout(() => ruleta.classList.remove("girar"), 5000);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(money.value);
-
-    if (money.current == null) {
-      setBall(null);
-      return;
-    }
-    console.log(ball);
-    console.log(ball);
-  }
-
   return (
     <>
       <main className="ruleta">
@@ -108,24 +98,27 @@ function App() {
           </label>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => e.preventDefault()}>
           <article className="buttons">
             {buttons.map((_, i) => (
               <input
                 key={i}
                 type="submit"
                 value={i}
-                onClick={() => setBall(money.current != null ? i : null)}
+                onClick={() => setBall(i)}
                 disabled={isWorking}
               />
             ))}
           </article>
-          <label htmlFor="">Ingrese suma a apostar</label>
+          <label htmlFor="money">Ingrese suma a apostar</label>
           <input
             type="number"
             min={0}
             max={99999}
-            ref={money}
+            value={money}
+            name="money"
+            id="money"
+            onChange={(e) => setMoney(e.target.value)}
             disabled={isWorking}
             required
           />

@@ -1,8 +1,8 @@
 import { useUserContext } from "../../context";
 
 // eslint-disable-next-line react/prop-types
-const Cart = ({ products }) => {
-  const { setUserData } = useUserContext();
+const Cart = ({ products, handleVisibility }) => {
+  const { userData, setUserData } = useUserContext();
 
   function handleAdd(id) {
     setUserData((lastValue) => {
@@ -27,6 +27,12 @@ const Cart = ({ products }) => {
 
   return (
     <aside>
+      <input
+        className="close"
+        type="button"
+        value="x"
+        onClick={handleVisibility}
+      />
       <article>
         {Object.values(products).map(({ name, price, unitsTaken, image }) => {
           return (
@@ -42,12 +48,23 @@ const Cart = ({ products }) => {
                 </p>
                 <p>Cantidad: {unitsTaken}</p>
               </div>
-              <button onClick={() => handleAdd(name)}>Add</button>
-              <button onClick={() => handleMinus(name)}>Minus</button>
+              <div className="right">
+                <button onClick={() => handleAdd(name)}>Add</button>
+                <button onClick={() => handleMinus(name)}>Minus</button>
+              </div>
             </section>
           );
         })}
       </article>
+      <input
+        type="button"
+        value="Purchase"
+        className={`purchase ${
+          Object.entries(userData?.cart).length !== 0 && "green"
+        }`}
+        disabled={Object.entries(userData?.cart).length === 0}
+        onClick={() => console.log(Object.entries(userData?.cart).length !== 0)}
+      />
     </aside>
   );
 };

@@ -138,7 +138,9 @@ const Ecommerce = () => {
   return (
     <>
       <CartIcon handle={handleClickCart} />
-      {showCart && <Cart products={userData?.cart} />}
+      {showCart && (
+        <Cart products={userData?.cart} handleVisibility={handleClickCart} />
+      )}
       <main className="e-commerce">
         {items.map((item) => (
           <Item {...item} key={crypto.randomUUID()} />
