@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 
 import "./ruleta.css";
+import { useUserContext } from "../../context";
 
 const $ = (element) => document.querySelector(element);
 
@@ -18,9 +19,13 @@ const angles = new Array(37).fill(0).map((_, i) => {
 function App() {
   const [isWorking, setIsWorking] = useState(false);
   const [ball, setBall] = useState(null);
-  const money = useRef(null);
+  const [money, setMoney] = useState("");
+
+  const { userData, setUserData } = useUserContext();
 
   async function handleClick() {
+    if (ball == null || money == "" || userData.currency == 0) return;
+
     const bola = $(".bola");
 
     bola.style.top = "47%";
@@ -61,8 +66,14 @@ function App() {
         setTimeout(() => {
           if (ball === value) {
             alert("ganaste");
+            setUserData((lastValue) => {
+              return { ...lastValue, currency: lastValue.currency + money * 4 };
+            });
           } else {
             alert("perdiste");
+            setUserData((lastValue) => {
+              return { ...lastValue, currency: lastValue.currency -  money };
+            });
           }
         }, 1000);
       }
@@ -75,21 +86,10 @@ function App() {
     setTimeout(() => ruleta.classList.remove("girar"), 5000);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(money.value);
-
-    if (money.current == null) {
-      setBall(null);
-      return;
-    }
-    console.log(ball);
-    console.log(ball);
-  }
-
   return (
     <>
       <main className="ruleta">
+        <label htmlFor=""></label>
         <div className="container">
           <img className="ruleta-img" src="./images/ruleta.jpg" alt="" />
           <img className="bola" src="./images/bola.png" alt="" />
@@ -108,14 +108,14 @@ function App() {
           </label>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => e.preventDefault()}>
           <article className="buttons">
             {buttons.map((_, i) => (
               <input
                 key={i}
                 type="submit"
                 value={i}
-                onClick={() => setBall(money.current != null ? i : null)}
+                onClick={() => setBall(i)}
                 disabled={isWorking}
               />
             ))}
@@ -124,8 +124,9 @@ function App() {
           <input
             type="number"
             min={0}
-            max={99999}
-            ref={money}
+            max={userData?.currency}
+            value={money}
+            onChange={(e) => setMoney(e.target.value)}
             disabled={isWorking}
             required
           />
