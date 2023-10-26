@@ -9,6 +9,7 @@ import Ruleta from "./components/ruleta/page";
 import Home from "./components/home/page";
 
 
+
 import Template from "./templates/main/page";
 import Context from "./context";
 
