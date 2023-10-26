@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
 import "./e-commerce.css";
 import { useState } from "react";
 import Item from "./item";
+import { useUserContext } from "../../context";
+import CartIcon from "../../svg/cart";
+import Cart from "./cart";
 
 const Ecommerce = () => {
   const [items, setItems] = useState([
@@ -127,14 +129,25 @@ const Ecommerce = () => {
       ranking: [],
     },
   ]);
+  const { userData } = useUserContext();
+
+  const [showCart, setShowCart] = useState(false);
+
+  const handleClickCart = () => setShowCart((lastValue) => !lastValue);
 
   return (
-    <main className="e-commerce">
-      {items.map((item) => (
-        <Item {...item} key={crypto.randomUUID()} />
-      ))}
-    </main>
+    <>
+      <CartIcon handle={handleClickCart} />
+      {showCart && (
+        <Cart products={userData?.cart} handleVisibility={handleClickCart} />
+      )}
+      <main className="e-commerce">
+        {items.map((item) => (
+          <Item {...item} key={crypto.randomUUID()} />
+        ))}
+      </main>
+    </>
   );
 };
 
-export default Ecommerce 
+export default Ecommerce;

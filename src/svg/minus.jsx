@@ -1,6 +1,8 @@
-const Minus = () => {
+// eslint-disable-next-line react/prop-types
+const Minus = ({handle}) => {
   return (
     <svg
+    onClick={handle}
       xmlns="http://www.w3.org/2000/svg"
       className="icon icon-tabler icon-tabler-square-rounded-Minus"
       width="44"

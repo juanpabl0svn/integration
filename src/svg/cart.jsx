@@ -1,8 +1,10 @@
-export const Cart = () => {
+// eslint-disable-next-line react/prop-types
+const Cart = ({ handle }) => {
   return (
     <svg
+      onClick={handle}
       xmlns="http://www.w3.org/2000/svg"
-      className="icon icon-tabler icon-tabler-shopping-cart-filled"
+      className="icon-tabler icon-tabler-shopping-cart-filled cart"
       width="44"
       height="44"
       viewBox="0 0 24 24"
@@ -21,3 +23,5 @@ export const Cart = () => {
     </svg>
   );
 };
+
+export default Cart;

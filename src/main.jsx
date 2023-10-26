@@ -6,38 +6,51 @@ import Loteria from "./components/loteria/page";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Ruleta from "./components/ruleta/page";
+import Home from "./components/home/page";
+
 
 import Template from "./templates/main/page";
+import Context from "./context";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <Template>
-        <Ecommerce />
-      </Template>
-    ),
-  },
-  {
-    path: "/ruleta",
-    element: (
-      <Template>
-        <Ruleta />
-      </Template>
-    ),
-  },
-  {
-    path: "/loteria",
-    element: (<Template>
-      <Loteria />
-    </Template>)
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-]);
+    {
+      path: "/",
+      element: (
+        <Template>
+          <Home />
+        </Template>
+      ),
+    },
+    {
+      path: "/store",
+      element: (
+        <Template>
+          <Ecommerce />
+        </Template>
+      ),
+    },
+    {
+      path: "/ruleta",
+      element: (
+        <Template>
+          <Ruleta />
+        </Template>
+      ),
+    },
+    {
+      path: "/loteria",
+      element: (<Template>
+        <Loteria />
+      </Template>)
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+  ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <Context>
+    <RouterProvider router={router} />
+  </Context>
 );

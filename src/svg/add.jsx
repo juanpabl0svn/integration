@@ -1,6 +1,8 @@
-const Add = () => {
+// eslint-disable-next-line react/prop-types
+const Add = ({ handle }) => {
   return (
     <svg
+      onClick={handle}
       xmlns="http://www.w3.org/2000/svg"
       className="icon icon-tabler icon-tabler-circle-plus"
       width="44"

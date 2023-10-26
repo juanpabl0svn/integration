@@ -1,5 +1,143 @@
 .ruleta {
-  & img {
-    height: 500px;
+  position: relative;
+  /* transform: translate(-50%,-50%); */
+  width: 90vw;
+  height: calc(100% - 70px);
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
+.container {
+  position: relative;
+  display: grid;
+  place-content: center;
+}
+
+.ruleta-img {
+  height: 400px;
+  transform: rotate(0deg);
+  mix-blend-mode: multiply;
+}
+
+.bola {
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 20px;
+  transition: all 200ms ease-out;
+}
+
+.girar {
+  animation: girar 5s ease-in-out;
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(354deg);
+  }
+}
+
+.hidden {
+  opacity: 0;
+}
+
+button.button-ruleta {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 10px 30px;
+  transition: 0.5s;
+  position: relative;
+  font-size: 17px;
+  background: #333;
+  border: none;
+  color: #fff;
+  margin: 10px;
+}
+
+button.button-ruleta:hover {
+  letter-spacing: 0.25em;
+  background: #ff1867;
+  color: #ff1867;
+  box-shadow: 0 0 45px #ff1867;
+}
+
+button.button-ruleta::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #222222;
+}
+
+button.button-ruleta span {
+  position: relative;
+  z-index: 1;
+}
+
+button.button-ruleta i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+button.button-ruleta i::before {
+  content: "";
+  position: absolute;
+  border: 2px solid #ff1867;
+  width: 7px;
+  height: 4px;
+  top: -3.5px;
+  left: 80%;
+  background: #222222;
+  transform: translateX(-50%);
+  transition: 0.5s;
+}
+
+button.button-ruleta:hover i::before {
+  width: 20px;
+  left: 20%;
+}
+
+button.button-ruleta i::after {
+  content: "";
+  position: absolute;
+  border: 2px solid #ff1867;
+  width: 7px;
+  height: 4px;
+  bottom: -3.5px;
+  left: 20%;
+  background: #222222;
+  transform: translateX(-50%);
+  transition: 0.5s;
+}
+
+button.button-ruleta:hover i::after {
+  width: 20px;
+  left: 80%;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(40px, 100px));
+}
+
+input[type="number"] {
+  margin-left: 20px;
+}
+
+
+.separator{
+  display: grid;
+  place-items: center;
+
+}
+
+.separator label{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
