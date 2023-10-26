@@ -3,6 +3,7 @@ import "./index.css";
 import Login from "./components/login/page";
 import Ecommerce from "./components/e-commerce/page";
 import Loteria from "./components/loteria/page";
+import Tournament from "./components/torneo/tournament";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Ruleta from "./components/ruleta/page";
@@ -46,14 +47,22 @@ const router = createBrowserRouter([
       </Template>
     ),
   },
-  // {
-  //   path: "/zodiaco",
-  //   element: (
-  //     <Template>
-  //       <Zodiaco />
-  //     </Template>
-  //   ),
-  // },
+   {
+     path: "/zodiaco",
+     element: (
+       <Template>
+         <Zodiaco />
+       </Template>
+     ),
+   },
+   {
+    path: "/torneos",
+    element: (
+      <Template>
+        <Tournament />
+      </Template>
+    ),
+  },
   {
     path: "/login",
     element: <Login />,

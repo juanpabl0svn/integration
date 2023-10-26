@@ -28,7 +28,7 @@ function App() {
 
     const bola = $(".bola");
 
-    bola.style.top = "47%";
+    bola.style.top = "50%";
     bola.style.left = "50%";
     const randomValue = Math.floor(Math.random() * angles.length);
     const { angle, value } = angles[randomValue];
@@ -44,7 +44,7 @@ function App() {
     // Velocidad de rotación (cuántos grados se moverá la bola por cada intervalo de tiempo)
     const velocidadRotacion = 1; // Puedes ajustar este valor
 
-    const radio = 155; // Radio de la ruleta
+    const radio = 110; // Radio de la ruleta
 
     const anguloFinal = angle;
     console.log(anguloFinal);
@@ -72,7 +72,7 @@ function App() {
           } else {
             alert("perdiste");
             setUserData((lastValue) => {
-              return { ...lastValue, currency: lastValue.currency -  money };
+              return { ...lastValue, currency: lastValue.currency - money };
             });
           }
         }, 1000);
@@ -95,12 +95,13 @@ function App() {
           <img className="bola" src="./images/bola.png" alt="" />
         </div>
         <div className="separator">
+
           <button
-            className={`button-ruleta ${isWorking ? `hidden` : ""}`}
+            class="glow-on-hover"
+            className={`glow-on-hover ${isWorking ? `hidden` : ""}`}
             onClick={handleClick}
           >
-            <span>Girar!</span>
-            <i></i>
+              Girar
           </button>
 
           <label htmlFor="">

@@ -8,7 +8,7 @@ const Templeate = ({ children }) => {
       <header>
         <nav>
           <img
-            style={{ width: "80px", marginRight: "55%" }}
+            style={{ width: "80px", marginRight: "30%" }}
             src="http://www.localhost:5173/images/krilin.png"
             alt=""
           />
@@ -16,7 +16,8 @@ const Templeate = ({ children }) => {
           <Link to="/store">E-commerce</Link>
           <Link to="/ruleta">Ruleta</Link>
           <Link to="/loteria">Loteria</Link>
-          <Link to="/zodiaco">Zodiaco</Link>
+          <Link to="https://multihexagon.github.io/zodiaco/#0">Zodiaco</Link>
+          <Link to="/torneos">Torneos</Link>
           <Link to="/login">Log in</Link>
         </nav>
       </header>

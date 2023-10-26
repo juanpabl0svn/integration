@@ -79,6 +79,10 @@ header {
   padding: 5px;
   transition: background 200ms ease;
 }
+.close{
+  color: red;
+  background-color: white;
+}
 
 .cart:hover {
   background: rgb(228, 118, 1);
