@@ -7,8 +7,7 @@ const Cart = ({ products }) => {
   function handleAdd(id) {
     setUserData((lastValue) => {
       const value = lastValue.cart[id];
-      console.log(value);
-      if (value.unitsTaken == lastValue.units) return lastValue;
+      if (value.unitsTaken == value.units) return lastValue;
       value.unitsTaken += 1;
       return { ...lastValue, cart: { ...lastValue.cart, [value.name]: value } };
     });
