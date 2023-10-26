@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Sometype+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap");
+
+  header{
+    height: 100px;
+    width: 90%;
+    font-family: 'Sometype Mono', monospace;
+
+  }
+
+  button {
+    box-sizing: border-box;
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+  }
+  
+  
+  .card:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+  }
+  
+  .card:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
+
+  .superwrapper{
+    margin-top: 4%;
+    height: 80vh;
+    width: 170vh;
+    background-color: red;
+  }
+  .wrapper {
+    display: grid;
+    height: 80vh;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+    grid-auto-rows: minmax(100px, auto);
+    background-color: rgb(255, 255, 255);
+  }
+
+  .one {
+    background-image: url('/images/zodiaco.png');
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: aliceblue;
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+  }
+  .two {
+    background-image: url('/images/ruleta.png');
+    background-size: contain;
+    width: 52vh;
+    grid-column: 3;
+    grid-row: 2/5;
+  }
+  .three {  
+    background-image: url('/images/shop.png');
+    background-repeat: repeat-y;
+    background-size: contain;
+    width: 38vh;
+    grid-column: 1 ;
+    grid-row: 2 / 7;
+  }
+  .four {
+    background-image: url('/images/lotto.jpg');
+    background-repeat: no-repeat;
+    background-size:contain;
+    font-family: 'Caveat', cursive;
+    margin-top: 0.2em;
+    height: 18vh;
+    font-size: 64px;
+    color: white;
+    grid-column: 3/4;
+    grid-row: 5/7;
+  }
+
+  .five {
+    background-image: url('/images/tournament.jpg');
+    background-size: contain;
+    grid-column: 2;
+    margin-top: 3.5em;
+    height: 20vh;
+    grid-row: 5;
+    width: 60vh;
+    margin-right: 3.5em;
+  }
+
+  
+  .six {
+    background-image: url('/images/auction.png');
+    background-size: contain;
+    grid-column: 2/3;
+    grid-row: 2/5;
+    height: 45vh;
+    width: 60vh;
+    margin-right: 3.5em;
+  }
+
+  .seven{
+    font-family: 'Sometype Mono', monospace;
+    display: flex;
+    border: 0;
+    background-color: transparent;
+    height: 1vh;
+    margin-top: 6em;
+    color: black;
+    grid-column: 3/4;
+    grid-row:6 ;
+  }

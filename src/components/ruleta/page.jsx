@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 import "./ruleta.css";
 import { useUserContext } from "../../context";
@@ -120,7 +120,7 @@ function App() {
               />
             ))}
           </article>
-          <label htmlFor="">Ingrese suma a apostar</label>
+          <label htmlFor="money">Ingrese suma a apostar</label>
           <input
             type="number"
             min={0}
