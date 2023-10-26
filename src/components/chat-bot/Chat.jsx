@@ -6,6 +6,70 @@ import SendIcon from "./SendIcon";
 import ExitIcon from "./ExitIcon";
 import useMessage from "../../hooks/useMessages";
 
+const options = {
+  password: [
+    "cambiar",
+    "contraseña",
+    "clave",
+    "ingresar",
+    "problema",
+    "quiero",
+  ],
+  pqr: [
+    "problema",
+    "pqr",
+    "cambiar",
+    "no",
+    "funciona",
+    "error",
+    "quiero",
+    "queja",
+    "insatisfecho",
+  ],
+  tournament: ["torneo", "problema", "ingresar", "persona", "participante"],
+};
+
+const giveAnAnswer = (message) => {
+  let answers = message.toLowerCase().split(" ");
+
+  let bestOne = "";
+  let contador = 0;
+  for (let clave in options) {
+    let contadorTemp = 0;
+    for (let answer of answers) {
+      if (options[clave].includes(answer)) {
+        contadorTemp++;
+      }
+    }
+    if (contadorTemp > contador) {
+      contador = contadorTemp;
+      bestOne = clave;
+    }
+  }
+
+  if (contador < 3) {
+    if (answers.includes("contraseña") || answers.includes("clave"))
+      return "password";
+    if (
+      answers.includes("pqr") ||
+      answers.includes("queja") ||
+      answers.includes("insatisfecho") ||
+      answers.includes("insatisfecha")
+    )
+      return "pqr";
+    if (answers.includes("torneo")) return "tournament";
+    if (answers.length === 1) {
+      if (answers[0] === "si") return "yes";
+      if (answers[0] === "no") return "no";
+      return "no_sense";
+    }
+    bestOne = "no_sense";
+  }
+  return bestOne;
+};
+
+// Assuming "options" is a global or an input, make sure it's defined or passed to the function.
+
 const PROCESS = {
   password: ["¿Quieres cambiar tu contraseña?", "Ingresa tu nueva contraseña"],
   pqr: ["¿Quieres hacer una PQR para presentar tu problema?", "Ingresa la pqr"],
@@ -51,7 +115,6 @@ async function checkQuestion(
   };
 
   if (isAnswering) {
-    console.log(currentProcess);
     HANDLE_PROCESS[currentProcess](message);
     setIsAnswering(false);
     setCurrentProcess(undefined);
@@ -59,14 +122,8 @@ async function checkQuestion(
     return setAnswer((lastMessages) => [...lastMessages, messageObject]);
   }
 
-  const { response } = await getFromService(`${URL}/review/${message}`);
+  const  response  = giveAnAnswer(message)
 
-  if (response == null) {
-    messageObject.text =
-      "Estamos experimentando fallas tecnicas, intente de nuevo mas tarde";
-
-    return setAnswer((lastMessages) => [...lastMessages, messageObject]);
-  }
 
   const process = PROCESS[response] ?? response;
 

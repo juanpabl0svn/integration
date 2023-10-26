@@ -1,9 +1,7 @@
-import React from "react";
-
 const Zodiaco = () => {
   return (
     <>
-      <video autoplay muted loop id="bg-video">
+      <video autoPlay muted loop id="bg-video">
         <source src="/video/stars_background.mp4" type="video/mp4" />
       </video>
 
