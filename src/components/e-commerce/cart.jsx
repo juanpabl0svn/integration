@@ -49,8 +49,8 @@ const Cart = ({ products, handleVisibility }) => {
                 <p>Cantidad: {unitsTaken}</p>
               </div>
               <div className="right">
-                <button onClick={() => handleAdd(name)}>Add</button>
-                <button onClick={() => handleMinus(name)}>Minus</button>
+                <button onClick={() => handleAdd(name)}>+</button>
+                <button onClick={() => handleMinus(name)}>-</button>
               </div>
             </section>
           );

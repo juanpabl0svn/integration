@@ -6,18 +6,21 @@ const Templeate = ({ children }) => {
   return (
     <>
       <header>
-      <nav>
-        <img style={{width:'80px', marginRight:'55%'}} src="http://www.localhost:5173/images/krilin.png" alt="" />
+        <nav>
+          <img
+            style={{ width: "80px", marginRight: "55%" }}
+            src="http://www.localhost:5173/images/krilin.png"
+            alt=""
+          />
           <Link to="/">Inicio</Link>
           <Link to="/store">E-commerce</Link>
           <Link to="/ruleta">Ruleta</Link>
           <Link to="/loteria">Loteria</Link>
+          <Link to="/zodiaco">Zodiaco</Link>
           <Link to="/login">Log in</Link>
         </nav>
       </header>
-      <div >
-        {children}
-      </div>
+      <div>{children}</div>
       <ChatBot />
     </>
   );
