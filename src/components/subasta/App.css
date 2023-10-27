@@ -1,0 +1,48 @@
+.Content {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #c21313;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    height: clamp(500px, 40vh, 450px);
+  
+    & h1{
+      /* margin-top: 10px; */
+      width: 470px;
+    }
+  
+    & .form-group {
+      display: grid;
+      place-content: center;
+  
+      & label.short {
+        display: block;
+      }
+  
+      & input {
+        padding: 5px;
+        margin: 10px;
+      }
+  
+      .col-12 {
+        display: flex;
+        flex-direction: column;
+        & textarea {
+          align-self: center;
+          width: 80%;
+        }
+  
+      }
+    }
+  }
+  
+  .btn-primary{
+    width: 100px;
+    align-self: center;
+    margin-bottom: 30px;
+    padding: 10px;
+  }

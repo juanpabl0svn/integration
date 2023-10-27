@@ -18,6 +18,7 @@ const Templeate = ({ children }) => {
           <Link to="/loteria">Loteria</Link>
           <Link to="https://multihexagon.github.io/zodiaco/#0">Zodiaco</Link>
           <Link to="/torneos">Torneos</Link>
+          <Link to="/subasta">Subasta</Link>
           <Link to="/login">Log in</Link>
         </nav>
       </header>

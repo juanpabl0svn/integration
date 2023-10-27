@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Sometype+Mono&display=swap");
 
 .wrapperTorneo{
+    
   overflow-y: scroll;
   position: fixed;
   align-items: center;

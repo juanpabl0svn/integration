@@ -26,7 +26,7 @@ header {
 }
 .e-commerce {
   position: absolute;
-  top: 70px;
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -50,12 +50,7 @@ header {
   }
 
   & article {
-    background: rgb(251, 133, 7);
-    background: radial-gradient(
-      circle,
-      rgba(251, 133, 7, 1) 0%,
-      rgba(251, 158, 7, 0.8687850140056023) 100%
-    );
+    background: rgb(162, 162, 162);
   }
 
   & article section {
