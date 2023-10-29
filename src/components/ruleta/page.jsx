@@ -24,7 +24,8 @@ function App() {
   const { userData, setUserData } = useUserContext();
 
   async function handleClick() {
-    if (ball == null || money == "" || userData.currency == 0) return;
+    if (ball == null || money == "" || userData.currency == 0 || isWorking)
+      return;
 
     const bola = $(".bola");
 
@@ -32,8 +33,6 @@ function App() {
     bola.style.left = "50%";
     const randomValue = Math.floor(Math.random() * angles.length);
     const { angle, value } = angles[randomValue];
-
-    console.log(angle, value);
 
     setIsWorking(true);
 
@@ -94,12 +93,11 @@ function App() {
           <img className="bola" src="/images/bola.png" alt="" />
         </div>
         <div className="separator">
-
           <button
             className={`glow-on-hover ${isWorking ? `hidden` : ""}`}
             onClick={handleClick}
           >
-              Girar
+            Girar
           </button>
 
           <label htmlFor="">
