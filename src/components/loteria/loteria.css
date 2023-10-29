@@ -3,6 +3,9 @@
 /* Por ejemplo, puedes definir estilos para tu logo */
 
 /* Estilos específicos para el logo */
+
+@import url("https://fonts.googleapis.com/css2?family=Sometype+Mono&display=swap");
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -17,6 +20,7 @@
 /* Estilos específicos para el encabezado */
 .App-header {
   background-color: #282c34;
+  font-family: 'Sometype Mono', monospace;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

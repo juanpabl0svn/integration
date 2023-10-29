@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Sometype+Mono&display=swap");
+
+.wrapperTorneo{
+  overflow-y: scroll;
+  position: fixed;
+  align-items: center;
+  top: 15%;
+  height: 80vh;
+  width: 100%;
+  transform: translateX(-50%);
+  
+}
+
+ul{
+  list-style-type: none;
+}
+
+h1{
+  font-family: 'Sometype Mono', monospace;
+}
+
+h2{
+  font-family: 'Sometype Mono', monospace;
+}
+
+label{
+  font-family: 'Sometype Mono', monospace;
+}
+
+select{
+  font-family: 'Sometype Mono', monospace;
+}
+
+.input {
+  max-width: 210px;
+  margin-top: 10px;
+  height: 30px;
+  border-radius: 7px;
+  border: 0;
+  outline: auto grey;
+  padding-inline: 15px;
+  font-size: 16px;
+  transform: all 200ms;
+}
+
+.input:focus {
+  text-decoration: underline 6px;
+  box-shadow: 0 0 50px rgb(255, 255, 255);
+  border: 1px solid grey;
+}
+
+
+.randomize-button {
+  background: #FBCA1F;
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  font-weight: 900;
+  font-size: 18px;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+}
+
+.randomize-button:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
+}
+
+.randomize-button:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
+}
+
+.winner-button{
+  --btn-default-bg: rgb(41, 41, 41);
+  --btn-padding: 15px 20px;
+  --btn-hover-bg: rgb(51, 51, 51);
+  --btn-transition: .3s;
+  --btn-letter-spacing: .1rem;
+  --btn-animation-duration: 1.2s;
+  --btn-shadow-color: rgba(0, 0, 0, 0.137);
+  --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+  --hover-btn-color: #FAC921;
+  --default-btn-color: #fff;
+  --font-size: 16px;
+  /* 👆 this field should not be empty */
+  --font-weight: 600;
+  --font-family: Menlo,Roboto Mono,monospace;
+}
+
+.winner-button{
+  box-sizing: border-box;
+  padding: var(--btn-padding);
+  margin-right: 20px;
+  color: var(--default-btn-color);
+  font: var(--font-weight) var(--font-size) var(--font-family);
+  background: var(--btn-default-bg);
+  border: none;
+  cursor: pointer;
+  transition: var(--btn-transition);
+  overflow: hidden;
+  box-shadow: var(--btn-shadow);
+}
+
+.winner-button span {
+  letter-spacing: var(--btn-letter-spacing);
+  transition: var(--btn-transition);
+  box-sizing: border-box;
+  position: relative;
+  background: inherit;
+}
+
+.winner-button span::before {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  background: inherit;
+}
+
+.winner-button:hover, .winner-button:focus {
+  background: var(--btn-hover-bg);
+}
+
+.winner-button:hover span, .winner-button:focus span {
+  color: var(--hover-btn-color);
+}
+
+.winner-button:hover span::before, .winner-button:focus span::before {
+  animation: chitchat linear both var(--btn-animation-duration);
+}
+
+@keyframes chitchat {
+  0% {
+    content: "#";
+  }
+
+  5% {
+    content: ".";
+  }
+
+  10% {
+    content: "^{";
+  }
+
+  15% {
+    content: "-!";
+  }
+
+  20% {
+    content: "#$_";
+  }
+
+  25% {
+    content: "№:0";
+  }
+
+  30% {
+    content: "#{+.";
+  }
+
+  35% {
+    content: "@}-?";
+  }
+
+  40% {
+    content: "?{4@%";
+  }
+
+  45% {
+    content: "=.,^!";
+  }
+
+  50% {
+    content: "?2@%";
+  }
+
+  55% {
+    content: "\;1}]";
+  }
+
+  60% {
+    content: "?{%:%";
+    right: 0;
+  }
+
+  65% {
+    content: "|{f[4";
+    right: 0;
+  }
+
+  70% {
+    content: "{4%0%";
+    right: 0;
+  }
+
+  75% {
+    content: "'1_0<";
+    right: 0;
+  }
+
+  80% {
+    content: "{0%";
+    right: 0;
+  }
+
+  85% {
+    content: "]>'";
+    right: 0;
+  }
+
+  90% {
+    content: "4";
+    right: 0;
+  }
+
+  95% {
+    content: "2";
+    right: 0;
+  }
+
+  100% {
+    content: "";
+    right: 0;
+  }
+}

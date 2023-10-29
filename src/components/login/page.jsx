@@ -1,42 +1,47 @@
+import { useRef } from "react";
+import { useUserContext } from "../../context";
 import "./log-in.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const URL = "http://localhost:3000";
+// const URL = "http://localhost:3000";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const username = useRef();
+  const password = useRef();
+
+  const { userData, setUserData } = useUserContext;
+
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const $ = (element) => e.currentTarget.elements.namedItem(element);
-
-    const password = $("password");
-    const username = $("username");
-
-    // eslint-disable-next-line no-undef
-    const req = await fetch(URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    });
-
-    if (!req.ok) return;
-
-    const data = await req.json();
-
-    console.log(data);
-
-    window.location.href = "/main";
+    setUserData({
+      
+    })
   }
 
   return (
     <main className="log-in">
       <form onSubmit={handleSubmit} autoComplete="off">
         <article>
-          <input type="text" id="username" name="usernamae" required />
+          <input
+            type="text"
+            id="username"
+            name="username"
+            ref={username}
+            required
+          />
           <label htmlFor="username">Usuario</label>
         </article>
         <article>
-          <input type="password" id="password" name="password" required />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            ref={password}
+            required
+          />
           <label htmlFor="password">Contraseña</label>
         </article>
         <Link to="">¿Olvidaste tu contraseña?</Link>
