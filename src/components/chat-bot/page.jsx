@@ -1,5 +1,5 @@
-import InfoIcon from "./InfoIcon";
-import Chat from "./Chat";
+import InfoIcon from "./components/InfoIcon";
+import Chat from "./components/Chat";
 import './chat-bot.css'
 
 const ChatBot = () => {

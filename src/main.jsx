@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Subasta />,
       },
       {
-        path: "",
+        path: "store",
         element: <Ecommerce />,
       },
       {
@@ -43,6 +43,10 @@ const router = createBrowserRouter([
         path: "torneos",
         element: <Tournament />,
       },
+      {
+        path: '',
+        element: <Home/>
+      }
     ],
   },
   ,

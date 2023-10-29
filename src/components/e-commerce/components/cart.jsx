@@ -1,4 +1,4 @@
-import { useUserContext } from "../../context";
+import { useUserContext } from "../../../context";
 
 // eslint-disable-next-line react/prop-types
 const Cart = ({ products, handleVisibility }) => {
@@ -26,7 +26,7 @@ const Cart = ({ products, handleVisibility }) => {
   }
 
   return (
-    <aside>
+    <aside className="shopping-cart">
       <input
         className="close"
         type="button"

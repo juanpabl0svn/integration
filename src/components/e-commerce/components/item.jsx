@@ -1,6 +1,6 @@
-import Add from "../../svg/add";
-import Minus from "../../svg/minus";
-import { useUserContext } from "../../context";
+import Add from "../../../svg/add";
+import Minus from "../../../svg/minus";
+import { useUserContext } from "../../../context";
 
 // eslint-disable-next-line react/prop-types
 const Item = ({ name, image, price, units }) => {
@@ -38,11 +38,11 @@ const Item = ({ name, image, price, units }) => {
       <img src={image} alt={name} />
       <section>
         <p>
-          {price.toLocaleString("en", { style: "currency", currency: "USD" })}
+          {price?.toLocaleString("en", { style: "currency", currency: "USD" })}
         </p>
         <p>Disponibles: {units}</p>
         {units != 0 &&
-          (userData?.cart[name] ? (
+          (userData?.cart[name] != null ? (
             <Minus handle={handleClickThrow} />
           ) : (
             <Add handle={handleClickTake} />

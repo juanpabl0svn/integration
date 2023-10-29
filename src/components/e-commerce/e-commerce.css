@@ -50,12 +50,7 @@ header {
   }
 
   & article {
-    background: rgb(251, 133, 7);
-    background: radial-gradient(
-      circle,
-      rgba(251, 133, 7, 1) 0%,
-      rgba(251, 158, 7, 0.8687850140056023) 100%
-    );
+    background: #b8b3b3;
   }
 
   & article section {
@@ -79,7 +74,7 @@ header {
   padding: 5px;
   transition: background 200ms ease;
 }
-.close{
+.close {
   color: red;
   background-color: white;
 }
@@ -89,9 +84,10 @@ header {
   transition: background 200ms ease;
 }
 
-aside {
+aside.shopping-cart {
   position: fixed;
   top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5;
   height: clamp(200px, 50vh, 500px);
@@ -100,6 +96,8 @@ aside {
   padding: 20px;
   display: grid;
   place-items: center;
+
+
   & input[type="button"].close {
     position: absolute;
     top: 10px;

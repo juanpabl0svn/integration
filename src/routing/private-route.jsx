@@ -10,7 +10,7 @@ const LoggedIn = ({ children }) => {
 
   useEffect(() => {
     const user = localStorage(setUserData);
-    if (!user) {
+    if (!user && userData == null) {
       navigate("/");
     }
   }, []);

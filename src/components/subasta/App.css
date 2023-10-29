@@ -3,12 +3,13 @@
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #c21313;
+  background: #b3afaf;
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
   height: clamp(500px, 40vh, 450px);
+  border-radius: 20px;
 
   & h1{
     /* margin-top: 10px; */

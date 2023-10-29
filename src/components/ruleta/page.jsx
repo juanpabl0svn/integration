@@ -89,15 +89,13 @@ function App() {
   return (
     <>
       <main className="ruleta">
-        <label htmlFor=""></label>
         <div className="container">
-          <img className="ruleta-img" src="./images/ruleta.jpg" alt="" />
-          <img className="bola" src="./images/bola.png" alt="" />
+          <img className="ruleta-img" src="/images/ruleta.jpg" alt="" />
+          <img className="bola" src="/images/bola.png" alt="" />
         </div>
         <div className="separator">
 
           <button
-            class="glow-on-hover"
             className={`glow-on-hover ${isWorking ? `hidden` : ""}`}
             onClick={handleClick}
           >

@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import "./e-commerce.css";
 import { useState } from "react";
-import Item from "./item";
+import Item from "./components/item";
 import { useUserContext } from "../../context";
 import CartIcon from "../../svg/cart";
-import Cart from "./cart";
+import Cart from "./components/cart";
 
 const Ecommerce = () => {
   const [items, setItems] = useState([
@@ -134,6 +134,7 @@ const Ecommerce = () => {
   const [showCart, setShowCart] = useState(false);
 
   const handleClickCart = () => setShowCart((lastValue) => !lastValue);
+
 
   return (
     <>

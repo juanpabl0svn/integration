@@ -1,7 +1,7 @@
 const Menu = () => {
   return (
     <p className="bot menu">
-      Bienvenido a NOMBRE, dime, ¿Qué puedo hacer por ti?
+      Bienvenido a JUANGUICOMERCE, dime, ¿Qué puedo hacer por ti?
     </p>
   );
 };

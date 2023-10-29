@@ -2,7 +2,7 @@ const localStorage = (setter) => {
   const user = window.localStorage.getItem("userData");
 
   if (user !== null) {
-    setter(user);
+    setter(JSON.parse(user));
     return true;
   }
   return false;

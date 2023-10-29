@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useUserContext } from "../../context";
 import "./log-in.css";
 import { Link, useNavigate } from "react-router-dom";
+import localStorage from "../../services/localStorage";
 
 // const URL = "http://localhost:3000";
 
@@ -11,14 +12,31 @@ const Login = () => {
   const username = useRef();
   const password = useRef();
 
-  const { userData, setUserData } = useUserContext;
+  const { userData, setUserData } = useUserContext();
+
+  useEffect(() => {
+    const user = localStorage(setUserData);
+
+    if (userData != null || user) navigate("/main");
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    setUserData({
-      
-    })
+    const obj = {
+      name: "juan pablo sanchez",
+      username: username.current.value,
+      password: password.current.value,
+      currency: 4000,
+      cart: {},
+      selectedItem: null,
+    };
+
+    setUserData(obj);
+
+    navigate("/main");
+
+    window.localStorage.setItem("userData", JSON.stringify(obj));
   }
 
   return (

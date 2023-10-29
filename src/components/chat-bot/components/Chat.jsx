@@ -3,7 +3,7 @@ import Message from "./Message";
 import Menu from "./Menu";
 import SendIcon from "./SendIcon";
 import ExitIcon from "./ExitIcon";
-import useMessage from "../../hooks/useMessages";
+import useMessage from "../../../hooks/useMessages";
 
 const options = {
   password: [
