@@ -3,6 +3,8 @@ import { useState } from "react";
 import "./ruleta.css";
 import { useUserContext } from "../../context";
 
+import Swal from "sweetalert2";
+
 const $ = (element) => document.querySelector(element);
 
 const buttons = new Array(37).fill(0);
@@ -21,7 +23,7 @@ function App() {
   const [ball, setBall] = useState(null);
   const [money, setMoney] = useState("");
 
-  const { userData, setUserData } = useUserContext();
+  const { userData } = useUserContext();
 
   async function handleClick() {
     if (ball == null || money == "" || userData.currency == 0 || isWorking)
@@ -40,49 +42,69 @@ function App() {
 
     let anguloActual = 0;
 
-    // Velocidad de rotación (cuántos grados se moverá la bola por cada intervalo de tiempo)
-    const velocidadRotacion = 1; // Puedes ajustar este valor
+    // Velocidad inicial
+    let velocidadRotacion = 0.2; // Puedes ajustar este valor
+    // Velocidad máxima
+    const velocidadMaxima = 4;
+    // Cuánto se incrementará/decrementará la velocidad por tick
+    const aceleracion = 0.02;
 
     const radio = 110; // Radio de la ruleta
 
-    const anguloFinal = angle;
-    console.log(anguloFinal);
-    // Usamos setInterval para simular la animación
+    const anguloFinal = angle + 360 * 3; // Añadimos 2 rotaciones completas
+
+    let faseAceleracion = true;
+
     const intervalo = setInterval(() => {
       anguloActual += velocidadRotacion;
 
-      // Calcular las coordenadas X e Y de la bola según el ángulo
+      if (faseAceleracion) {
+        // Acelerar hasta la velocidad máxima
+        if (velocidadRotacion < velocidadMaxima) {
+          velocidadRotacion += aceleracion;
+        } else {
+          faseAceleracion = false; // Cambiar a fase de desaceleración
+        }
+      } else {
+        // Desacelerar
+        if (anguloActual >= anguloFinal - 1100) {
+          // Comenzar a desacelerar en la última rotación
+          velocidadRotacion -= aceleracion;
+          if (velocidadRotacion <= 1) velocidadRotacion = 1; // Evitar que la velocidad sea 0
+        }
+      }
+
       const x = radio * Math.sin(anguloActual * (Math.PI / 180));
       const y = radio * -Math.cos(anguloActual * (Math.PI / 180));
 
-      bola.style.left = `calc(50% + ${x}px - 5px)`; // 5px es la mitad del ancho de la bola
-      bola.style.top = `calc(50% + ${y}px - 5px)`; // 5px es la mitad de la altura de la bola
+      bola.style.left = `calc(50% + ${x}px - 5px)`;
+      bola.style.top = `calc(50% + ${y}px - 5px)`;
 
-      if (anguloActual >= anguloFinal + 360 * 2) {
-        clearInterval(intervalo); // Detener la animación cuando se alcance el ángulo final
+      if (anguloActual >= anguloFinal) {
+        clearInterval(intervalo);
         setIsWorking(false);
+        const hasWon = bola == value;
 
         setTimeout(() => {
-          if (ball === value) {
-            alert("ganaste");
-            setUserData((lastValue) => {
-              return { ...lastValue, currency: lastValue.currency + money * 4 };
+          if (hasWon)
+            Swal.fire({
+              icon: "success",
+              title: "Yeahh",
+              text: "Ganaste!!",
             });
-          } else {
-            alert("perdiste");
-            setUserData((lastValue) => {
-              return { ...lastValue, currency: lastValue.currency - money };
+          else
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "No ganaste, lo sentimos!",
             });
-          }
         }, 1000);
       }
     }, 10);
 
-    // const numberData = await fetch("", {
-
     ruleta.classList.add("girar");
 
-    setTimeout(() => ruleta.classList.remove("girar"), 5000);
+    setTimeout(() => ruleta.classList.remove("girar"), 4000);
   }
 
   return (

@@ -35,7 +35,7 @@
 }
 
 .girar {
-  animation: girar 5s ease-in-out;
+  animation: girar 4s ease-in-out;
 }
 
 @keyframes girar {
