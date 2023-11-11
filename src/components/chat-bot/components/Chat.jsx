@@ -5,6 +5,7 @@ import SendIcon from "./SendIcon";
 import ExitIcon from "./ExitIcon";
 import useMessage from "../../../hooks/useMessages";
 
+// Definición de palabras clave para identificar el tipo de pregunta
 const options = {
   password: [
     "cambiar",
@@ -28,11 +29,13 @@ const options = {
   tournament: ["torneo", "problema", "ingresar", "persona", "participante"],
 };
 
+// Función para determinar el tipo de pregunta en función de las palabras clave
 const giveAnAnswer = (message) => {
   let answers = message.toLowerCase().split(" ");
 
   let bestOne = "";
   let contador = 0;
+  // Iterar sobre las opciones y contar las coincidencias
   for (let clave in options) {
     let contadorTemp = 0;
     for (let answer of answers) {
@@ -40,12 +43,14 @@ const giveAnAnswer = (message) => {
         contadorTemp++;
       }
     }
+    // Actualizar la mejor opción si se encuentra una con más coincidencias
     if (contadorTemp > contador) {
       contador = contadorTemp;
       bestOne = clave;
     }
   }
 
+  // Lógica para determinar la mejor opción si no hay suficientes coincidencias
   if (contador < 3) {
     if (answers.includes("contraseña") || answers.includes("clave"))
       return "password";
@@ -67,6 +72,7 @@ const giveAnAnswer = (message) => {
   return bestOne;
 };
 
+// Respuestas posibles en función del tipo de pregunta
 const PROCESS = {
   password: ["¿Quieres cambiar tu contraseña?", "Ingresa tu nueva contraseña"],
   pqr: ["¿Quieres hacer una PQR para presentar tu problema?", "Ingresa la pqr"],
@@ -76,12 +82,35 @@ const PROCESS = {
   si: ["Dime"],
 };
 
+// Funciones de manejo para procesos específicos
 const HANDLE_PROCESS = {
-  pqr: (message) => alert("Realizaste pqr " + message),
-  password: (message) => alert("Nueva contraseña " + message),
-  tournament: (message) => alert("Torneo " + message),
+  pqr: (message, setAnswer) => {
+    // Cambiado de alert a mensaje en el chat
+    const pqrMessage = {
+      type: "bot",
+      text: "Realizaste una PQR: " + message,
+    };
+    setAnswer((lastMessages) => [...lastMessages, pqrMessage]);
+  },
+  password: (message, setAnswer) => {
+    // Cambiado de alert a mensaje en el chat
+    const newPasswordMessage = {
+      type: "bot",
+      text: `¡Nueva contraseña establecida: ${message}!`,
+    };
+    setAnswer((lastMessages) => [...lastMessages, newPasswordMessage]);
+  },
+  tournament: (message, setAnswer) => {
+    // Cambiado de alert a mensaje en el chat
+    const tournamentMessage = {
+      type: "bot",
+      text: "Torneo: " + message,
+    };
+    setAnswer((lastMessages) => [...lastMessages, tournamentMessage]);
+  },
 };
 
+// Función para controlar el desplazamiento automático de los mensajes
 function controlMessages() {
   const chat = document.getElementById("chat");
   if (!chat) return;
@@ -94,6 +123,7 @@ function controlMessages() {
   }, 1000);
 }
 
+// Función para determinar la respuesta del bot y manejar los procesos
 async function checkQuestion(
   message,
   setAnswer,
@@ -108,25 +138,23 @@ async function checkQuestion(
   };
 
   if (isAnswering) {
-    HANDLE_PROCESS[currentProcess](message);
+    HANDLE_PROCESS[currentProcess](message, setAnswer);
     setIsAnswering(false);
     setCurrentProcess(undefined);
-    messageObject.text = "Hay algo mas en lo que pueda ayudarte?";
+    messageObject.text = "¿Hay algo más en lo que pueda ayudarte?";
     return setAnswer((lastMessages) => [...lastMessages, messageObject]);
   }
 
   const response = giveAnAnswer(message);
-
   const process = PROCESS[response] ?? response;
-
   messageObject.text = process[0];
 
   if (currentProcess) {
-    if (process == "yes") {
+    if (process === "yes") {
       messageObject.text = PROCESS[currentProcess][1];
       setIsAnswering(true);
     } else {
-      messageObject.text = "Entonces cuentame como puedo ayudarte";
+      messageObject.text = "Entonces, cuéntame cómo puedo ayudarte";
       setCurrentProcess(undefined);
     }
     return setAnswer((lastMessages) => [...lastMessages, messageObject]);
@@ -141,7 +169,6 @@ async function checkQuestion(
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
-
   const newMessage = useRef();
 
   const { currentProcess, setCurrentProcess, isAnswering, setIsAnswering } =
@@ -150,7 +177,7 @@ const Chat = () => {
   useEffect(() => {
     controlMessages();
     const lastMessage = messages[messages.length - 1];
-    if (messages.length == 0 || lastMessage?.type !== "user") return () => {};
+    if (messages.length === 0 || lastMessage?.type !== "user") return () => {};
     checkQuestion(
       lastMessage?.text,
       setMessages,
@@ -160,7 +187,7 @@ const Chat = () => {
       setIsAnswering
     );
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [messages]);
 
   const handleSubmit = () => {
@@ -212,4 +239,5 @@ const Chat = () => {
     </article>
   );
 };
+
 export default Chat;
